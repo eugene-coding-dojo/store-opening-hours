@@ -40,4 +40,16 @@ class StoreTest {
         assertThat(WEEKDAYS_ONLY_930_TO_1730.statusFor(2024, 3, 15, 18, 0))
             .isEqualTo("Opens on Monday at 09:30");
     }
+
+    @Test
+    void whenShopIsClosedOnWeekEnd_thenItShouldOpenOnMonday() {
+        assertThat(WEEKDAYS_ONLY_10_TO_20.statusFor(2024, 3, 16, 15, 0))
+            .isEqualTo("Opens on Monday at 10:00");
+        assertThat(WEEKDAYS_ONLY_930_TO_1730.statusFor(2024, 3, 16, 15, 0))
+            .isEqualTo("Opens on Monday at 09:30");
+        assertThat(WEEKDAYS_ONLY_10_TO_20.statusFor(2024, 3, 17, 15, 0))
+            .isEqualTo("Opens on Monday at 10:00");
+        assertThat(WEEKDAYS_ONLY_930_TO_1730.statusFor(2024, 3, 17, 15, 0))
+            .isEqualTo("Opens on Monday at 09:30");
+    }
 }

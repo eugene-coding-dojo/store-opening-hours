@@ -16,7 +16,9 @@ public class Store {
         final String currentTime = String.format("%02d:%02d", hour, minute);
         final int dayOfWeek = LocalDate.of(year, month, day).getDayOfWeek().getValue();
 
-        if (currentTime.compareTo(weekdaysOpen) < 0) {
+        if (dayOfWeek > 5) {
+            return String.format("Opens on Monday at %s", weekdaysOpen);
+        } else if (currentTime.compareTo(weekdaysOpen) < 0) {
             return String.format("Opens at %s", weekdaysOpen);
         } else if (currentTime.compareTo(weekdaysClose) < 0) {
             return String.format("Closes at %s", weekdaysClose);
